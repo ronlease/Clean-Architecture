@@ -7,11 +7,11 @@ namespace Clean.Application.Contracts.Persistence
 {
     public interface IAuthorRepository
     {
+        Task DeleteAuthorAsync(Author author);
+
         Task<Author> GetAuthorAsync(int id);
 
         Task<IReadOnlyCollection<Author>> GetAuthorsAsync();
-
-        Task RemoveAuthorAsync(Author author);
 
         Task UpdateAuthorAsync(Author author);
     }

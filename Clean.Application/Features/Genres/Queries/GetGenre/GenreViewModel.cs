@@ -1,13 +1,11 @@
 ﻿// Copyright 2024 Ron Lease
 // SPDX - License - Identifier: Apache - 2.0
 
-namespace Clean.Domain.Entities
+namespace Clean.Application.Features.Genres.Queries.GetGenre
 {
-    public class Genre
+    public class GenreViewModel
     {
-        public ICollection<Author> Authors { get; set; } = [];
-
-        public ICollection<Book> Books { get; set; } = [];
+        public IEnumerable<GenreAuthorDto> GenreAuthors { get; set; } = [];
 
         public int GenreId { get; set; }
 

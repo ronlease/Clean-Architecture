@@ -1,14 +1,13 @@
 ﻿// Copyright 2024 Ron Lease
 // SPDX - License - Identifier: Apache - 2.0
 
-namespace Clean.Domain.Entities
+using Clean.Domain.Entities;
+using MediatR;
+
+namespace Clean.Application.Features.Genres.Commands.UpdateGenre
 {
-    public class Genre
+    public class UpdateGenreCommand : IRequest
     {
-        public ICollection<Author> Authors { get; set; } = [];
-
-        public ICollection<Book> Books { get; set; } = [];
-
         public int GenreId { get; set; }
 
         public string GenreName { get; set; } = string.Empty;

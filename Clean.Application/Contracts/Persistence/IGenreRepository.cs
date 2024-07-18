@@ -7,11 +7,11 @@ namespace Clean.Application.Contracts.Persistence
 {
     public interface IGenreRepository
     {
+        Task DeleteGenreAsync(Genre genre);
+
         Task<Genre> GetGenreAsync(int id);
 
         Task<IReadOnlyCollection<Genre>> GetGenresAsync();
-
-        Task RemoveGenreAsync(Genre genre);
 
         Task UpdateGenreAsync(Genre genre);
     }
