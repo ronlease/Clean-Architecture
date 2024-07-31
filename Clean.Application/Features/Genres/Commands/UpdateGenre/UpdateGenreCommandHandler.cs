@@ -11,12 +11,9 @@ namespace Clean.Application.Features.Genres.Commands.UpdateGenre
 {
     public class UpdateGenreCommandHandler(IMapper mapper, IGenreRepository genreRepository) : IRequestHandler<UpdateGenreCommand>
     {
-        private readonly IGenreRepository _genreRepository = genreRepository;
-        private readonly IMapper _mapper = mapper;
-
         public async Task Handle(UpdateGenreCommand request, CancellationToken cancellationToken)
         {
-            var genre = await _genreRepository.GetGenreAsync(request.GenreId)
+            var genre = await genreRepository.GetGenreAsync(request.GenreId)
                 ?? throw new NotFoundException(nameof(Genre), request.GenreId);
 
             var validator = new UpdateGenreCommandValidator();
@@ -27,9 +24,9 @@ namespace Clean.Application.Features.Genres.Commands.UpdateGenre
                 throw new ValidationException(validationResults);
             }
 
-            _mapper.Map(request, genre, typeof(UpdateGenreCommand), typeof(Genre));
+            mapper.Map(request, genre, typeof(UpdateGenreCommand), typeof(Genre));
 
-            await _genreRepository.UpdateGenreAsync(genre);
+            await genreRepository.UpdateGenreAsync(genre);
         }
     }
 }
