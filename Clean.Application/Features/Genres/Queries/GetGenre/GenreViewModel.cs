@@ -9,6 +9,6 @@ namespace Clean.Application.Features.Genres.Queries.GetGenre
 
         public int GenreId { get; set; }
 
-        public string GenreName { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
     }
 }
