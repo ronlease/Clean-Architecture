@@ -12,7 +12,6 @@
     <Folder Include="Features\Authors\Commands\RemoveAuthor\" />
     <Folder Include="Features\Authors\Queries\GetAuthors\" />
     <Folder Include="Features\Authors\Queries\GetAuthor\" />
-    <Folder Include="Features\Books\Commands\CreateBook\" />
     <Folder Include="Features\Books\Commands\UpdateBook\" />
     <Folder Include="Features\Books\Commands\RemoveBook\" />
     <Folder Include="Models\" />
