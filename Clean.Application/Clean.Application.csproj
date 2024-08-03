@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Authors\Commands\UpdateAuthor\" />
-    <Folder Include="Features\Authors\Commands\RemoveAuthor\" />
     <Folder Include="Features\Authors\Queries\GetAuthors\" />
     <Folder Include="Features\Authors\Queries\GetAuthor\" />
     <Folder Include="Models\" />
