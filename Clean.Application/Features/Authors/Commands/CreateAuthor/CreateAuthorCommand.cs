@@ -1,18 +1,18 @@
 ﻿// Copyright 2024 Ron Lease
 // SPDX - License - Identifier: Apache - 2.0
 
-using Clean.Domain.Common;
+using MediatR;
 
-namespace Clean.Domain.Entities
+namespace Clean.Application.Features.Authors.Commands.CreateAuthor
 {
-    public class Author : BaseEntity
+    public class CreateAuthorCommand : IRequest<int>
     {
         public int AuthorId { get; set; }
-
-        public ICollection<Book> Books { get; set; } = [];
 
         public string FirstName { get; set; } = string.Empty;
 
         public string LastName { get; set; } = string.Empty;
+
+        public override string ToString() => $"Author ID: {AuthorId}, First Name: {FirstName}, Last Name: {LastName}";
     }
 }

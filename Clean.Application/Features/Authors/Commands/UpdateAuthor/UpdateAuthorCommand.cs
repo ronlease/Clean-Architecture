@@ -1,11 +1,12 @@
 ﻿// Copyright 2024 Ron Lease
 // SPDX - License - Identifier: Apache - 2.0
 
-using Clean.Domain.Common;
+using Clean.Domain.Entities;
+using MediatR;
 
-namespace Clean.Domain.Entities
+namespace Clean.Application.Features.Authors.Commands.UpdateAuthor
 {
-    public class Author : BaseEntity
+    public class UpdateAuthorCommand : IRequest
     {
         public int AuthorId { get; set; }
 

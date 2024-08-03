@@ -1,11 +1,14 @@
 ﻿// Copyright 2024 Ron Lease
 // SPDX - License - Identifier: Apache - 2.0
 
-namespace Clean.Domain.Entities
+using Clean.Domain.Entities;
+using MediatR;
+
+namespace Clean.Application.Features.Books.Commands.UpdateBook
 {
-    public class Book
+    public class UpdateBookCommand : IRequest
     {
-        public Author Author { get; set; } = new Author();
+        public ICollection<Author> Authors { get; set; } = [];
 
         public int BookId { get; set; }
 

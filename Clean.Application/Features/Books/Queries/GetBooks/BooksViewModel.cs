@@ -1,12 +1,10 @@
 ﻿// Copyright 2024 Ron Lease
 // SPDX - License - Identifier: Apache - 2.0
 
-namespace Clean.Domain.Entities
+namespace Clean.Application.Features.Books.Queries.GetBooks
 {
-    public class Book
+    public class BooksViewModel
     {
-        public Author Author { get; set; } = new Author();
-
         public int BookId { get; set; }
 
         public string Title { get; set; } = string.Empty;
