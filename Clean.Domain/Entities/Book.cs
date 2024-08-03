@@ -9,8 +9,6 @@ namespace Clean.Domain.Entities
 
         public int BookId { get; set; }
 
-        public ICollection<Genre> Genres { get; set; } = [];
-
         public string Title { get; set; } = string.Empty;
 
         public int YearPublished { get; set; }

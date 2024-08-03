@@ -13,8 +13,6 @@ namespace Clean.Domain.Entities
 
         public string FirstName { get; set; } = string.Empty;
 
-        public ICollection<Genre> Genres { get; set; } = [];
-
         public string LastName { get; set; } = string.Empty;
     }
 }
