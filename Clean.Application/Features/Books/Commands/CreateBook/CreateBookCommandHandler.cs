@@ -22,7 +22,7 @@ namespace Clean.Application.Features.Books.Commands.CreateBook
             }
 
             var book = mapper.Map<Book>(command);
-            book = await bookRepository.CreateAsync(book);
+            book = await bookRepository.CreateBookAsync(book);
 
             return book.BookId;
         }

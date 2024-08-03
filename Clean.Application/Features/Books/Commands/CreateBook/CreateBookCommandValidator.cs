@@ -2,7 +2,6 @@
 // SPDX - License - Identifier: Apache - 2.0
 
 using Clean.Application.Contracts.Persistence;
-using Clean.Domain.Entities;
 using FluentValidation;
 
 namespace Clean.Application.Features.Books.Commands.CreateBook

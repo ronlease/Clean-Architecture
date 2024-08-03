@@ -7,7 +7,7 @@ namespace Clean.Application.Contracts.Persistence
 {
     public interface IBookRepository
     {
-        Task<Book> CreateAsync(Book book);
+        Task<Book> CreateBookAsync(Book book);
 
         Task DeleteBookAsync(Book book);
 

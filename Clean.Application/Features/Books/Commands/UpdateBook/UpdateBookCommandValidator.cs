@@ -13,7 +13,6 @@ namespace Clean.Application.Features.Books.Commands.UpdateBook
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.");
 
             RuleFor(b => b.Title)
-                .NotNull()
                 .NotEmpty().WithMessage("{PropertyName} is required.");
         }
     }
