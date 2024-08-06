@@ -3,39 +3,43 @@
 
 using Clean.Application.Contracts.Persistence;
 using Clean.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Clean.Persistence.Repositories
 {
     public class AuthorRepository(CleanDbContext dbContext) : IAuthorRepository
     {
-        public Task<Author> CreateAuthorAsync(Author author)
+        public async Task<Author> CreateAuthorAsync(Author author)
         {
-            throw new NotImplementedException();
+            await dbContext.AddAsync(author);
+            await dbContext.SaveChangesAsync();
+
+            return author;
         }
 
-        public Task DeleteAuthorAsync(Author author)
+        public async Task DeleteAuthorAsync(Author author)
         {
-            throw new NotImplementedException();
+            dbContext.Remove(author);
+
+            await dbContext.SaveChangesAsync();
         }
 
-        public Task<Author> GetAuthorAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<Author> GetAuthorAsync(int id) => await dbContext.Authors.FindAsync(id) ?? new Author();
 
-        public Task<IReadOnlyCollection<Author>> GetAuthorsAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IReadOnlyCollection<Author>> GetAuthorsAsync() => await dbContext.Authors.ToListAsync();
 
         public Task<bool> IsAuthorUniqueAsync(string firstName, string lastName)
         {
-            throw new NotImplementedException();
+            var isUnique = !dbContext.Authors.Any(a => a.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase) && a.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase));
+
+            return Task.FromResult(isUnique);
         }
 
-        public Task UpdateAuthorAsync(Author author)
+        public async Task UpdateAuthorAsync(Author author)
         {
-            throw new NotImplementedException();
+            dbContext.Entry(author).State = EntityState.Modified;
+
+            await dbContext.SaveChangesAsync();
         }
     }
 }
