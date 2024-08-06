@@ -1,9 +1,11 @@
 ﻿// Copyright 2024 Ron Lease
 // SPDX - License - Identifier: Apache - 2.0
 
+using Clean.Domain.Common;
+
 namespace Clean.Domain.Entities
 {
-    public class Book
+    public class Book : BaseEntity
     {
         public Author Author { get; set; } = new Author();
 

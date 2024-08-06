@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Genres\**" />
+    <EmbeddedResource Remove="Features\Genres\**" />
+    <None Remove="Features\Genres\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
 
