@@ -10,9 +10,15 @@ namespace Clean.Persistence.Configurations
     {
         public static void Configure(EntityTypeBuilder<Book> builder)
         {
+            builder.HasKey(k => k.BookId);
+
             builder.Property(p => p.Title)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            builder
+                .HasOne(r => r.Author)
+                .WithMany(r => r.Books);
         }
     }
 }

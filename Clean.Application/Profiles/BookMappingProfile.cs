@@ -2,6 +2,7 @@
 // SPDX - License - Identifier: Apache - 2.0
 
 using AutoMapper;
+using Clean.Application.Features.Authors.Queries.GetAuthor;
 using Clean.Application.Features.Books.Commands.CreateBook;
 using Clean.Application.Features.Books.Commands.RemoveBook;
 using Clean.Application.Features.Books.Commands.UpdateBook;
@@ -15,6 +16,7 @@ namespace Clean.Application.Profiles
     {
         public BookMappingProfile()
         {
+            CreateMap<Book, AuthorBookDto>();
             CreateMap<Book, BookAuthorDto>().ReverseMap();
             CreateMap<Book, BookViewModel>().ReverseMap();
             CreateMap<Book, BooksViewModel>().ReverseMap();

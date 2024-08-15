@@ -7,12 +7,14 @@ namespace Clean.Domain.Entities
 {
     public class Book : BaseEntity
     {
-        public Author Author { get; set; } = new Author();
+        public required int AuthorId { get; set; }
 
-        public int BookId { get; set; }
+        public required int BookId { get; set; }
 
-        public string Title { get; set; } = string.Empty;
+        public required string Title { get; set; }
 
         public int YearPublished { get; set; }
+
+        public virtual Author? Author { get; set; }
     }
 }
