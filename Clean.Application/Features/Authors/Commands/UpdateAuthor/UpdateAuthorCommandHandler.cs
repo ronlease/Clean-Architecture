@@ -26,6 +26,8 @@ namespace Clean.Application.Features.Authors.Commands.UpdateAuthor
 
             mapper.Map(command, author, typeof(UpdateAuthorCommand), typeof(Author));
 
+            // TODO: Handle book changes.
+
             await authorRepository.UpdateAuthorAsync(author);
         }
     }

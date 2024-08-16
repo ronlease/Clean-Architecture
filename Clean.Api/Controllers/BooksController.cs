@@ -1,11 +1,11 @@
 ﻿// Copyright 2024 Ron Lease
 // SPDX - License - Identifier: Apache - 2.0
 
-using Clean.Application.Features.Authors.Commands.CreateAuthor;
-using Clean.Application.Features.Authors.Commands.RemoveAuthor;
-using Clean.Application.Features.Authors.Commands.UpdateAuthor;
-using Clean.Application.Features.Authors.Queries.GetAuthor;
-using Clean.Application.Features.Authors.Queries.GetAuthors;
+using Clean.Application.Features.Books.Commands.CreateBook;
+using Clean.Application.Features.Books.Commands.RemoveBook;
+using Clean.Application.Features.Books.Commands.UpdateBook;
+using Clean.Application.Features.Books.Queries.GetBook;
+using Clean.Application.Features.Books.Queries.GetBooks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,34 +14,35 @@ namespace Clean.Api.Controllers
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")]
-    public class AuthorsController(IMediator mediator) : Controller
+    public class BooksController(IMediator mediator) : Controller
     {
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var command = new RemoveAuthorCommand
+            var command = new RemoveBookCommand
             {
-                AuthorId = id
+                BookId = id
             };
             await mediator.Send(command);
 
             return Ok();
         }
 
+
         [HttpGet]
-        public async Task<ActionResult<IList<AuthorsViewModel>>> Get()
+        public async Task<ActionResult<IList<BooksViewModel>>> Get()
         {
-            var result = await mediator.Send(new GetAuthorsQuery());
+            var result = await mediator.Send(new GetBooksQuery());
 
             return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<AuthorViewModel>> Get(int id)
+        public async Task<ActionResult<BookViewModel>> Get(int id)
         {
-            var query = new GetAuthorQuery
+            var query = new GetBookQuery
             {
-                AuthorId = id
+                BookId = id
             };
 
             var result = await mediator.Send(query);
@@ -50,7 +51,7 @@ namespace Clean.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> Post([FromBody] CreateAuthorCommand command)
+        public async Task<ActionResult<int>> Post([FromBody] CreateBookCommand command)
         {
             var id = await mediator.Send(command);
 
@@ -58,7 +59,7 @@ namespace Clean.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] UpdateAuthorCommand command)
+        public async Task<ActionResult> Put([FromBody] UpdateBookCommand command)
         {
             await mediator.Send(command);
 

@@ -10,8 +10,6 @@ namespace Clean.Application.Features.Authors.Commands.UpdateAuthor
     {
         public int AuthorId { get; set; }
 
-        public ICollection<Book> Books { get; set; } = [];
-
         public string FirstName { get; set; } = string.Empty;
 
         public string LastName { get; set; } = string.Empty;
