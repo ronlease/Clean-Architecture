@@ -7,7 +7,7 @@ namespace Clean.Application.Features.Authors.Queries.GetAuthor
     {
         public int BookId { get; set; }
 
-        public string Title { get; set; } = string.Empty;
+        public string? Title { get; set; }
 
         public int YearPublished { get; set; }
     }

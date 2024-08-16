@@ -24,20 +24,19 @@ namespace Clean.Persistence.Repositories
             await dbContext.SaveChangesAsync();
         }
 
-        /* Use something like
-         *  var buyer = await _context.Buyers
-            .Include(b => b.PaymentMethods)
-            .Where(b => b.IdentityGuid == identity)
-            .SingleOrDefaultAsync();
-        maybe?
-        */
-        public async Task<Author> GetAuthorAsync(int id) => await dbContext.Authors.FindAsync(id) ?? throw new NotFoundException(nameof(Author), id);
+        public async Task<Author> GetAuthorAsync(int id)
+        {
+            return await dbContext.Authors
+                .Include(b => b.Books)
+                .Where(a => a.AuthorId == id)
+                .SingleOrDefaultAsync() ?? throw new NotFoundException(nameof(Author), id);
+        }
 
         public async Task<IReadOnlyCollection<Author>> GetAuthorsAsync() => await dbContext.Authors.ToListAsync();
 
         public Task<bool> IsAuthorUniqueAsync(string firstName, string lastName)
         {
-            var isUnique = !dbContext.Authors.Any(a => a.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase) && a.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase));
+            var isUnique = !dbContext.Authors.Any(a => a.FirstName == firstName && a.LastName == lastName);
 
             return Task.FromResult(isUnique);
         }

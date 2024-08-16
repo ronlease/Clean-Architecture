@@ -10,6 +10,7 @@ namespace Clean.Persistence
     public class CleanDbContext(DbContextOptions<CleanDbContext> options) : DbContext(options)
     {
         public DbSet<Author> Authors { get; set; }
+
         public DbSet<Book> Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,7 +35,7 @@ namespace Clean.Persistence
             {
                 books.Add(new Book
                 {
-                    Author = authors[(bookId % 3) + 1],
+                    AuthorId = authors[bookId % 3].AuthorId,
                     BookId = bookId,
                     Title = $"Book {bookId}",
                     YearPublished = 2010 + bookId

@@ -7,6 +7,7 @@ using Clean.Application.Features.Authors.Commands.RemoveAuthor;
 using Clean.Application.Features.Authors.Commands.UpdateAuthor;
 using Clean.Application.Features.Authors.Queries.GetAuthor;
 using Clean.Application.Features.Authors.Queries.GetAuthors;
+using Clean.Application.Features.Books.Queries.GetBook;
 using Clean.Domain.Entities;
 
 namespace Clean.Application.Profiles
@@ -18,6 +19,7 @@ namespace Clean.Application.Profiles
             CreateMap<Author, AuthorBookDto>().ReverseMap();
             CreateMap<Author, AuthorViewModel>().ReverseMap();
             CreateMap<Author, AuthorsViewModel>().ReverseMap();
+            CreateMap<Author, BookAuthorDto>().ReverseMap();
             CreateMap<Author, CreateAuthorCommand>().ReverseMap();
             CreateMap<Author, RemoveAuthorCommand>().ReverseMap();
             CreateMap<Author, UpdateAuthorCommand>().ReverseMap();

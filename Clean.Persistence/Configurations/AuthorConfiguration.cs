@@ -10,6 +10,8 @@ namespace Clean.Persistence.Configurations
     {
         public static void Configure(EntityTypeBuilder<Author> builder)
         {
+            builder.HasKey(k => k.AuthorId);
+
             builder.Property(p => p.FirstName)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -17,6 +19,11 @@ namespace Clean.Persistence.Configurations
             builder.Property(p => p.LastName)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            builder
+                .HasMany(r => r.Books)
+                .WithOne(r => r.Author)
+                .HasForeignKey(r => r.AuthorId);
         }
     }
 }

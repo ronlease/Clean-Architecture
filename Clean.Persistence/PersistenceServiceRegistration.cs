@@ -15,7 +15,7 @@ namespace Clean.Persistence
         {
             // TODO: add connection string
             services.AddDbContext<CleanDbContext>(options =>
-                options.UseSqlite(configuration.GetConnectionString("")));
+                options.UseSqlite(configuration.GetConnectionString("CleanDatabase")));
 
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
